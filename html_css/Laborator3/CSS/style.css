@@ -1,0 +1,13 @@
+table{
+    color:brown; 
+    text-align:center; 
+    border-collapse:collapse;
+    border:2px solid grey;
+    width:30%;
+    background-color:bisque; 
+    }
+th,td,tr{
+    padding: 10px 15px;
+    border:1px solid grey;
+    border-collapse:collapse;
+        }

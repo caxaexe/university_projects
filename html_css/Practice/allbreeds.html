@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Породы кошек</title>
+    <link rel="stylesheet" href="./CSS/styles.css">
+    <link rel="short icon" href="./Images/icon.png">
+</head>
+<body>
+    <header>
+        <a href="./kisen.html">
+            <img src="./Images/logo.png" alt="Cat Icon" id="iconimg">
+        </a>
+        <nav>
+            <ul>
+                <li><a href="./allbreeds.html">Породы кошек</a></li>
+                <li><a href="./kittens.html">О котенке</a></li>
+                <li><a href="./health.html">Здоровье</a></li>
+                <li><a href="./behavior.html">Поведение</a></li>
+                <li><a href="./feeding.html">Питание</a></li>
+                <li><a href="./care.html">Уход</a></li>
+            </ul>
+        </nav>
+    </header>
+
+<main>
+    <h1 class="headline">Породы кошек</h1>
+    <hr>
+    
+    <form onsubmit="searchCat(event)">
+        <input id="search-input" type="text" placeholder="Поиск">
+        <button class="searchbutton" type="submit"></button>
+    </form>
+    <div id="not-found">Ничего не найдено</div>
+
+    <div class="cat-list-container">
+        <table class="cat-list-table">
+            <thead>
+                <tr>
+                    <th>Название</th>
+                    <th>Длина шерсти</th>
+                    <th>Происхождение</th>
+                </tr>
+            </thead>
+            <tbody id="cat-list">
+                <tr class="cat-item">
+                    <td>
+                        <a target="_blank" href="https://petstory.ru/knowledge/cats/cat-breeds/bengal-cat/">
+                            <img src="./Images/bengal.png" alt="Bengal">
+                            <h4>Бенгальская кошка</h4>
+                        </a>
+                    </td>
+                    <td>Короткая</td>
+                    <td>США</td>
+                </tr>
+                <tr class="cat-item">
+                    <td>
+                        <a target="_blank" href="https://petstory.ru/knowledge/cats/cat-breeds/british-shorthair/">
+                            <img src="./Images/britain.png" alt="Britain">
+                            <h4>Британская короткошерстная кошка</h4>
+                        </a>
+                    </td>
+                    <td>Короткая</td>
+                    <td>Великобритания</td>
+                </tr>
+                <tr class="cat-item">
+                    <td>
+                        <a target="_blank" href="https://petstory.ru/knowledge/cats/cat-breeds/cornish-rex/">
+                            <img src="./Images/cornishrex.png" alt="Cornishrex">
+                            <h4>Корниш-рекс</h4>
+                        </a>
+                    </td>
+                    <td>Короткая</td>
+                    <td>Великобритания</td>
+                </tr>
+                <tr class="cat-item">
+                    <td>
+                        <a target="_blank" href="https://petstory.ru/knowledge/cats/cat-breeds/canadian-sphynx/">
+                            <img src="./Images/sphynx.png" alt="Sphynx">
+                            <h4>Сфинкс</h4>
+                        </a>
+                    </td>
+                    <td>Лысая</td>
+                    <td>Канада/Россия</td>
+                </tr>
+                <tr class="cat-item">
+                    <td>
+                        <a target="_blank" href="https://petstory.ru/knowledge/cats/cat-breeds/abyssinian-cat/">
+                            <img src="./Images/abyssinian.png" alt="Abyssinian">
+                            <h4>Абиссинская кошка</h4>
+                        </a>
+                    </td>
+                    <td>Короткая</td>
+                    <td>Египет</td>
+                </tr>
+                <tr class="cat-item">
+                    <td>
+                        <a target="_blank" href="https://petstory.ru/knowledge/cats/cat-breeds/turkish-angora/">
+                            <img src="./Images/angora.png" alt="Angora">
+                            <h4>Турецкая ангора</h4>
+                        </a>
+                    </td>
+                    <td>Длинная</td>
+                    <td>Турция</td>
+                </tr>
+                <tr class="cat-item">
+                    <td>
+                        <a target="_blank" href="https://petstory.ru/knowledge/cats/cat-breeds/bambino/">
+                            <img src="./Images/bambino.png" alt="Bambino">
+                            <h4>Бамбино</h4>
+                        </a>
+                    </td>
+                    <td>Лысая</td>
+                    <td>США</td>
+                </tr>
+                <tr class="cat-item">
+                    <td>
+                        <a target="_blank" href="https://petstory.ru/knowledge/cats/cat-breeds/caracat/">
+                            <img src="./Images/caracat.png" alt="Caracat">
+                            <h4>Каракет</h4>
+                        </a>
+                    </td>
+                    <td>Короткая</td>
+                    <td>Россия</td>
+                </tr>
+                <tr class="cat-item">
+                    <td>
+                        <a target="_blank" href="https://petstory.ru/knowledge/cats/cat-breeds/minskin/">
+                            <img src="./Images/minskin.png" alt="Minskin">
+                            <h4>Минскин</h4>
+                        </a>
+                    </td>
+                    <td>Короткая</td>
+                    <td>США</td>
+                </tr>
+                <tr class="cat-item">
+                    <td>
+                        <a target="_blank" href="https://petstory.ru/knowledge/cats/cat-breeds/oriental-cat/">
+                            <img src="./Images/oriental.png" alt="Oriental">
+                            <h4>Ориентальная кошка</h4>
+                        </a>
+                    </td>
+                    <td>Короткая</td>
+                    <td>Таиланд</td>
+                </tr>
+                <tr class="cat-item">
+                    <td>
+                        <a target="_blank" href="https://petstory.ru/knowledge/cats/cat-breeds/maine-coon/">
+                            <img src="./Images/mainecoon.png" alt="Mainecoon">
+                            <h4>Мейн-кун</h4>
+                        </a>
+                    </td>
+                    <td>Длинная</td>
+                    <td>США</td>
+                </tr>
+                <tr class="cat-item">
+                    <td>
+                        <a target="_blank" href="https://petstory.ru/knowledge/cats/cat-breeds/selkirk-rex/">
+                            <img src="./Images/selkirkrex.png" alt="Selkirkrex">
+                            <h4>Селкирк-рекс</h4>
+                        </a>
+                    </td>
+                    <td>Короткая</td>
+                    <td>США</td>
+                </tr>
+                <tr class="cat-item">
+                    <td>
+                        <a target="_blank" href="https://petstory.ru/knowledge/cats/cat-breeds/siamese-cat/">
+                            <img src="./Images/siamese.png" alt="Siamese">
+                            <h4>Сиамская кошка</h4>
+                        </a>
+                    </td>
+                    <td>Короткая</td>
+                    <td>Таиланд</td>
+                </tr>
+                <tr class="cat-item">
+                    <td>
+                        <a target="_blank" href="https://petstory.ru/knowledge/cats/cat-breeds/ukrainian-levkoy/">
+                            <img src="./Images/ukrainianlevkoy.png" alt="Ukrainianlevkoy">
+                            <h4>Украинский левкой</h4>
+                        </a>
+                    </td>
+                    <td>Лысая</td>
+                    <td>Украина</td>
+                </tr>
+                <tr class="cat-item">
+                    <td>
+                        <a target="_blank" href="https://petstory.ru/knowledge/cats/cat-breeds/highland-fold/">
+                            <img src="./Images/highlandfold.png" alt="Highlandfold">
+                            <h4>Хайленд фолд</h4>
+                        </a>
+                    </td>
+                    <td>Длинная</td>
+                    <td>Шотландия</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+
+    <footer>
+        <p>© 2024. Все права защищены.</p>
+    </footer>
+
+<script src="./Script/script.js"></script>
+    
+</body>
+</html>

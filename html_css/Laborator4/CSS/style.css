@@ -1,0 +1,97 @@
+.block-osn{display:flex;
+           justify-content: center;
+        } 
+
+.block {
+    height:150px;
+    width:150px;
+    border-radius:10px;
+    margin:4px 4px;
+    box-shadow:2px 2px grey;
+    }
+
+.block1{
+    background-color:red;}
+.block2{
+    background-image: url('../Images/kit.png');
+    background-repeat: round ;}
+.block3{
+    background-color:violet;
+    background-image: url('../Images/kit.png');
+    background-repeat: repeat-x;}
+.block4{
+    background-color:greenyellow;
+    background-image: url('../Images/kit.png');
+    background-repeat: repeat-y;}
+.block5{
+    background-color:aqua;
+    background-image: url('../Images/kit.png');
+    background-repeat:no-repeat;
+    background-position: center;
+}
+
+.fon:focus {
+    background-color:palevioletred;
+    }
+
+ul i:first-child {
+    background-color:lightcoral;
+}
+
+li::first-letter{
+    color:darkcyan;
+    font-size: 30px;
+}
+
+p::selection{
+    background-color: aquamarine;
+}
+
+p:last-child{
+    text-decoration: solid underline purple 3px;
+}
+p::first-line{
+    color:darkolivegreen;
+}
+
+p::before {
+    content:'вау - ';
+    color:blue; }
+
+p::after{
+    content:'- не вау';
+    color:palevioletred;
+    
+}
+
+a:link {color: yellowgreen;}
+
+a:visited { color:darkmagenta;}
+
+a:hover { color:lightcoral;}
+
+a:active { color:yellow;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

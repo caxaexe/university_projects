@@ -1,0 +1,182 @@
+/* === Общие стили === */
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-buttons {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.nav-buttons a {
+    display: inline-block;
+    padding: 8px 16px;
+    text-decoration: none;
+    background-color: #242a24;
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+.nav-buttons a:hover {
+    background-color: rgb(31, 36, 31)
+}
+
+/* === Главная страница === */
+.wrap {
+    text-align: center;
+}
+
+h1 {
+    font-size: 56px;
+    letter-spacing: 6px;
+    margin: 0 0 20px 0;
+    color: #ffffff;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.subtitle {
+    color: #bdbdbd;
+    margin-bottom: 30px;
+}
+
+.buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 22px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    background-color: #1f1f1f;
+    color: #e6e6e6;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+    border: 1px solid rgba(255,255,255,0.03);
+    transition: .12s ease-out;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn-primary {
+    background: linear-gradient(180deg, #2d8f4b, #24843f);
+    color: #fff;
+    border: none;
+}
+
+/* === Формы === */
+form {
+    background-color: #1e1e1e;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.7);
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+input[type="text"], input[type="password"] {
+    padding: 8px;
+    margin: 10px 0 20px 0;
+    border: none;
+    border-radius: 5px;
+    background-color: #2c2c2c;
+    color: #fff;
+}
+
+input[type="submit"] {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4caf50;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* === Карточки (user, admin) === */
+.card {
+    background-color: #1e1e1e;
+    padding: 28px;
+    border-radius: 10px;
+    width: 420px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+    text-align: center;
+}
+
+.link {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 10px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    background-color: #4caf50;
+    color: #fff;
+    font-weight: bold;
+}
+
+.link.alt {
+    background-color: transparent;
+    border: 1px solid rgba(255,255,255,0.06);
+    color: #ddd;
+}
+
+/* === Ошибки === */
+.error-box {
+    background-color: #1e1e1e;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.7);
+    text-align: center;
+    width: 360px;
+}
+
+.error-message {
+    color: #ff6b6b;
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.info {
+    color: #bdbdbd;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.back-link {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 6px;
+    background-color: #4caf50;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.back-link:hover {
+    background-color: #45a049;
+}

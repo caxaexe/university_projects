@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кошки - Вся информация о кошках</title>
+    <link rel="stylesheet" href="./CSS/styles.css">
+    <link rel="icon" href="./Images/icon.png">
+</head>
+<body>
+    <header>
+        <a href="./kisen.html">
+            <img src="./Images/logo.png" alt="Cat Icon" id="iconimg">
+        </a>
+        <nav>
+            <ul>
+                <li><a href="./allbreeds.html">Породы кошек</a></li>
+                <li><a href="./kittens.html">О котенке</a></li>
+                <li><a href="./health.html">Здоровье</a></li>
+                <li><a href="./behavior.html">Поведение</a></li>
+                <li><a href="./feeding.html">Питание</a></li>
+                <li><a href="./care.html">Уход</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="menu">
+        <h1>Вся информация о кошках</h1>
+        <div class="stripe"></div>
+        <ul>
+            <li><a href="#breeds">Породы кошек</a></li>
+            <li><a href="#kittens">О котенке</a></li>
+            <li><a href="#health">Здоровье</a></li>
+            <li><a href="#behavior">Поведение</a></li>
+            <li><a href="#feeding">Питание</a></li>
+            <li><a href="#care">Уход</a></li>
+        </ul>
+    </div>
+    <main>
+        <section id="breeds">
+            <h2>Породы кошек</h2>
+            <div class="breeds-container">
+                <div class="breed-card" onclick="redirectToPage('https://petstory.ru/knowledge/cats/cat-breeds/abyssinian-cat/')">
+                    <div class="breed">
+                        <img src="./Images/abyssinian.png" alt="Abyssinian cat">
+                        <h4>Абиссинская</h4>
+                    </div>
+                </div>
+                
+                <div class="breed-card" onclick="redirectToPage('https://petstory.ru/knowledge/cats/cat-breeds/bengal-cat/')">
+                    <div class="breed">
+                        <img src="./Images/bengal.png" alt="Bengal cat">
+                        <h4>Бенгальская</h4>
+                    </div>
+                </div>
+                
+                <div class="breed-card" onclick="redirectToPage('https://petstory.ru/knowledge/cats/cat-breeds/british-shorthair/')">
+                    <div class="breed">
+                        <img src="./Images/britain.png" alt="British Shorthair cat">
+                        <h4>Британская короткошёрстная</h4>
+                    </div>
+                </div>
+                
+                <div class="breed-card" onclick="redirectToPage('https://petstory.ru/knowledge/cats/cat-breeds/canadian-sphynx/')">
+                    <div class="breed">
+                        <img src="./Images/sphynx.png" alt="Sphynx cat">
+                        <h4>Сфинкс</h4>
+                    </div>
+                </div>
+            </div>
+        
+            <button id="showAllBreedsArticles" class="mainbutton">Все породы</button>
+        </section>
+        
+
+
+        <section id="mainsection">
+            <h2 id="kittens">О котенке</h2>
+            <div class="maincontainer">
+                <div class="maincard" onclick="redirectToPage('https://petstory.ru/knowledge/cats/kittens/kogda-i-pochemu-u-kotyat-menyaetsya-cvet-glaz/')">
+                    <div class="maindiv">
+                        <img src="./Images/articlechangeeyes.jpg" alt="Changing eyes">
+                        <h4>Когда и почему у котят меняется цвет глаз?</h4>
+                        <h5>У всех новорожденных котят цвет глаз голубой, но со временем он меняется. В каком возрасте..</h5>
+                    </div>
+                </div>
+                <div class="maincard" onclick="redirectToPage('https://petstory.ru/knowledge/cats/kittens/kak-priuchit-kotenka-k-lotku-i-tualetu-v-kvartire-bystro-i-prosto/')">
+                    <div class="maindiv">
+                        <img src="./Images/articlelotok.webp" alt="Lotok">
+                        <h4>Как приучить котенка к лотку</h4>
+                        <h5>Один из первых вопросов, который встает перед новоиспеченным владельцем – как приучить..</h5>
+                    </div>
+                </div>
+                <div class="maincard" onclick="redirectToPage('https://petstory.ru/knowledge/cats/kittens/etapy-razvitiya-kotyat/')">
+                    <div class="maindiv">
+                        <img src="./Images/articledeveloping.jpg" alt="Developing">
+                        <h4>Этапы развития котят</h4>
+                        <h5>Развитие котят во многом зависит не только от мамы-кошки, но и от владельца. На каждом этапе..</h5>
+                    </div>
+                </div>
+            </div>
+
+            <button id="showAllKittensArticles" class="mainbutton">Все статьи</button>
+
+            
+        </section>
+
+
+        <section id="mainsection">
+            <h2 id="health">Здоровье кошек</h2>
+            <div class="maincontainer">
+                <div class="maincard" onclick="redirectToPage('https://petstory.ru/knowledge/cats/cat-health/cat-vaccination/grafik-privivok/')">
+                    <div class="maindiv">
+                        <img src="./Images/articlevactinations.jpg" alt="Vactinations">
+                        <h4>График вакцинации кошек</h4>
+                        <h5>Каждой кошке, коту и котенку необходима вакцинация против инфекционных заболеваний. График вакцинаци..</h5>
+                    </div>
+                </div>
+                <div class="maincard" onclick="redirectToPage('https://petstory.ru/knowledge/cats/cat-health/cat-prevention/yadovitye-dlya-koshek-komnatnye-rasteniya-i-cvety-kakie-iz-nih-opasny/')">
+                    <div class="maindiv">
+                        <img src="./Images/articletoxicplants.webp" alt="Toxic plants">
+                        <h4>Ядовитые для кошек растения и комнатные цветы</h4>
+                        <h5>Задача ответственных владельцев животных-компаньонов — следить за тем, чтобы их дома были безопасным..</h5>
+                    </div>
+                </div>
+                <div class="maincard" onclick="redirectToPage('https://petstory.ru/knowledge/cats/kittens/etapy-razvitiya-kotyat/')">
+                    <div class="maindiv">
+                        <img src="./Images/articletypesofblood.jpg" alt="Types of blood">
+                        <h4>Сколько групп крови у кошек и какие существуют?</h4>
+                        <h5>Чем дальше развивается ветеринарная медицина, тем больше удивляются многие владельцы схожести людей..</h5>
+                    </div>
+                </div>
+            </div>
+
+            <button id="showAllHealthArticles" class="mainbutton">Все статьи</button>
+        </section>
+
+
+
+        <section id="mainsection">
+            <h2 id="behavior">Поведение кошек</h2>
+            <div class="maincontainer">
+                <div class="maincard" onclick="redirectToPage('https://petstory.ru/knowledge/cats/cat-behavior/pochemu-britanskie-koshki-takie-zlye/')">
+                    <div class="maindiv">
+                        <img src="./Images/articlebritain.webp" alt="Mad britain">
+                        <h4>Почему британские кошки злые?</h4>
+                        <h5>Поведение кошки связано как с породными особенностями, так и является следствием..</h5>
+                    </div>
+                </div>
+                <div class="maincard" onclick="redirectToPage('https://petstory.ru/knowledge/cats/cat-behavior/pochemu-koshki-chasto-umyvayutsya/')">
+                    <div class="maindiv">
+                        <img src="./Images/articleshower.jpg" alt="Shower">
+                        <h4>Почему кошки часто умываются?</h4>
+                        <h5>Кошачьих поистине считают настоящими чистюлями животного мира, поскольку почти..</h5>
+                    </div>
+                </div>
+                <div class="maincard" onclick="redirectToPage('https://petstory.ru/knowledge/cats/cat-behavior/pochemu-koshki-bodayutsya-golovoy-chto-eto-znachit/')">
+                    <div class="maindiv">
+                        <img src="./Images/articlehead.png" alt="Head">
+                        <h4>Почему кошки бодаются головой?</h4>
+                        <h5>Темперамент разных любимцев настолько отличается, что у одного владельца при одинаковом воспитании..</h5>
+                    </div>
+                </div>
+            </div>
+
+            <button id="showAllBehaviorArticles" class="mainbutton">Все статьи</button>
+        </section>
+
+        <section id="mainsection">
+            <h2 id="feeding">Питание кошек</h2>
+            <div class="maincontainer">
+                <div class="maincard" onclick="redirectToPage('https://petstory.ru/knowledge/cats/cat-feeding/kakie-ovoshchi-mozhno-davat-koshkam-a-kakie-net-kapusta-brokkoli-i-drugie/')">
+                    <div class="maindiv">
+                        <img src="./Images/articlevegetables.jpg" alt="Vegetables">
+                        <h4>Какие овощи можно кошкам и что давать опасно?</h4>
+                        <h5>Кошки — это истинные, облигатные хищники, но это не значит, что в их рационе не может быть ничего, к..</h5>
+                    </div>
+                </div>
+                <div class="maincard" onclick="redirectToPage('https://petstory.ru/knowledge/cats/cat-feeding/mozhno-li-kotyatam-moloko-i-esli-nelzya-davat-to-pochemu/')">
+                    <div class="maindiv">
+                        <img src="./Images/articlemilk.jpg" alt="Milk">
+                        <h4>Можно ли котятам молоко?</h4>
+                        <h5>Кормление животных на самом деле – непростое дело, если подходить к вопросу грамотно и ответственно,..</h5>
+                    </div>
+                </div>
+                <div class="maincard" onclick="redirectToPage('https://petstory.ru/knowledge/cats/cat-feeding/kakie-krupy-mozhno-koshkam-i-razresheno-li-davat-kashu/')">
+                    <div class="maindiv">
+                        <img src="./Images/articlegrain.jpg" alt="Grain">
+                        <h4>Какую крупу можно кошкам и какую нельзя?</h4>
+                        <h5>Кошки — это строгие хищники, потребность в углеводах у которых ниже, чем у животных с другими типами..</h5>
+                    </div>
+                </div>
+            </div>
+
+            <button id="showAllfeedingArticles" class="mainbutton">Все статьи</button>
+        </section>
+
+        <section id="mainsection">
+            <h2 id="care">Уход за кошками</h2>
+            <div class="maincontainer">
+                <div class="maincard" onclick="redirectToPage('https://petstory.ru/knowledge/cats/cat-care/pochemu-belye-koshki-gluhie/')">
+                    <div class="maindiv">
+                        <img src="./Images/articlewhitecat.jpg" alt="White cats">
+                        <h4>Почему белые кошки глухие?</h4>
+                        <h5>Существует много слухов и суеверий, связанных с окрасом кошек. Трехцветные, рыжие, черные или белые..</h5>
+                    </div>
+                </div>
+                <div class="maincard" onclick="redirectToPage('https://petstory.ru/knowledge/cats/cat-care/geterohromiya-u-koshek/')">
+                    <div class="maindiv">
+                        <img src="./Images/articleheterochrom.jpg" alt="Hetechromia">
+                        <h4>Гетерохромия у кошек</h4>
+                        <h5>Загадочный, почти мистический взгляд кошек становится особенно удивительным, если у животного..</h5>
+                    </div>
+                </div>
+                <div class="maincard" onclick="redirectToPage('https://petstory.ru/knowledge/cats/cat-care/kak-uhazhivat-za-pozhiloy-koshkoy/')">
+                    <div class="maindiv">
+                        <img src="./Images/articleold.jpg" alt="Old">
+                        <h4>Как ухаживать за пожилой кошкой?</h4>
+                        <h5>Уже с семи-восьми лет у кошек начинаются первые возрастные изменения. Чтобы ваш питомец прожил как м..</h5>
+                    </div>
+                </div>
+            </div>
+
+            <button id="showAllCareArticles" class="mainbutton">Все статьи</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024. Все права защищены.</p>
+    </footer>
+
+<script src="./Script/script.js"></script>
+</body>
+</html>
