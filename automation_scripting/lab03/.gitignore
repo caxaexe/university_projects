@@ -1,0 +1,5 @@
+error.log
+cron.log
+data/*.json
+Thumbs.db
+.DS_Store
