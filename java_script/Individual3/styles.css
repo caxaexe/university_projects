@@ -1,0 +1,57 @@
+body {
+    background-color: rgb(255, 247, 236);
+}
+
+table{
+    border: 2px solid rgb(0, 0, 0);
+    width: 1000px;
+    height: 200px;
+    border-collapse: collapse;
+    margin: auto;
+    margin-top: 40px;
+}
+
+td, th {
+    padding: 10px; 
+    text-align: center; 
+    border: 2px solid rgb(255, 247, 236);
+   }
+
+th {
+    background-color: rgb(238, 222, 200);
+    border-radius: 15px;
+    color: rgb(61, 61, 61);
+}
+
+#transactionTable tr:hover {
+    color: white;
+}
+
+.newButton {
+    border-radius: 5px;
+    color: rgb(61, 61, 61);
+    transition: .2s linear;
+    background:  rgb(255, 255, 255);
+}
+
+.newButton:hover {
+    box-shadow: 0 0 0 2px white, 0 0 0 4px rgb(155, 155, 155);
+}
+
+#addTransactionForm{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    color: rgb(61, 61, 61);
+    margin: 10px;
+}
+
+fieldset{
+    width:400px;
+    margin:auto;
+    border-radius: 10px;
+    background-color: rgb(238, 222, 200);
+    border: 2px black solid;
+    box-shadow: 3px 3px 0 0 rgb(82, 82, 82);
+}
