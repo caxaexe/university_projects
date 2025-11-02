@@ -5,6 +5,7 @@ pipeline {
             args '-u root:root'
         }
     }
+
     stages {
         stage('Install Dependencies') {
             steps {
@@ -13,6 +14,7 @@ pipeline {
                 }
             }
         }
+
         stage('Run Tests') {
             steps {
                 dir('sawm/lab04') {
