@@ -1,30 +1,29 @@
 pipeline {
-    agent { label 'php-agent' }
+    agent {
+        label 'php-agent'
+    }
 
-    stages {
-        stage('Checkout') {
-            steps {
-                echo 'Cloning repository...'
-                checkout scm
-            }
-        }
-
+    stages {        
         stage('Install Dependencies') {
             steps {
                 echo 'Installing dependencies...'
-                sh 'php -v'
-                sh 'composer install'
+                dir('sawm/lab04') { 
+                    sh 'php -v'
+                    sh 'composer install'
+                }
             }
         }
-
+        
         stage('Run Tests') {
             steps {
-                echo 'Running PHPUnit tests...'
-                sh './vendor/bin/phpunit --testdox'
+                echo 'Running tests...'
+                dir('sawm/lab04') {
+                    sh 'vendor/bin/phpunit --colors=always tests'
+                }
             }
         }
     }
-
+    
     post {
         always {
             echo 'Pipeline completed.'
