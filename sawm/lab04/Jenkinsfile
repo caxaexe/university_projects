@@ -1,1 +1,72 @@
+pipeline {
+    agent { label 'php-agent' }
 
+    environment {
+        GIT_CREDENTIALS = 'github-ssh-key'
+        COMPOSER_CACHE_DIR = "${env.WORKSPACE}/.composer_cache"
+    }
+
+    options {
+        ansiColor('xterm')
+        timestamps()
+        timeout(time: 30, unit: 'MINUTES')
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                script {
+                    checkout([$class: 'GitSCM',
+                        branches: [[name: '*/main']],
+                        userRemoteConfigs: [[url: 'git@github.com:youruser/your-php-repo.git', credentialsId: env.GIT_CREDENTIALS]]
+                    ])
+                }
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                echo 'Installing composer dependencies...'
+                sh '''
+                  # создаём кеш директорию чтобы ускорить сборки
+                  mkdir -p "$COMPOSER_CACHE_DIR"
+                  # если composer не установлен глобально, можно вызвать vendor/bin или установить php composer.phar
+                  composer install --no-interaction --no-progress --prefer-dist
+                '''
+            }
+        }
+
+        stage('Run Tests') {
+            steps {
+                echo 'Running PHPUnit...'
+                sh '''
+                  # запускаем phpunit, сохраняем junit-xml
+                  ./vendor/bin/phpunit --configuration phpunit.xml --log-junit junit.xml || true
+                '''
+            }
+        }
+
+        stage('Publish results & artifacts') {
+            steps {
+                archiveArtifacts artifacts: '**/coverage/*.html, **/logs/*.log', allowEmptyArchive: true
+                junit allowEmptyResults: false, testResults: 'junit.xml'
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Pipeline finished successfully'
+        }
+        unstable {
+            echo 'Some tests are failing (unstable)'
+        }
+        failure {
+            echo 'Pipeline failed'
+        }
+        always {
+            echo 'Cleaning up workspace'
+            cleanWs()
+        }
+    }
+}
