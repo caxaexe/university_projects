@@ -1,38 +1,24 @@
 pipeline {
     agent {
-        label 'php-agent'
+        docker {
+            image 'jenkins-php-agent'
+            args '-u root:root'
+        }
     }
-
-    stages {        
+    stages {
         stage('Install Dependencies') {
             steps {
-                echo 'Installing dependencies...'
-                dir('sawm/lab04') { 
-                    sh 'php -v'
+                dir('sawm/lab04') {
                     sh 'composer install'
                 }
             }
         }
-        
         stage('Run Tests') {
             steps {
-                echo 'Running tests...'
                 dir('sawm/lab04') {
-                    sh 'vendor/bin/phpunit --colors=always tests'
+                    sh './vendor/bin/phpunit'
                 }
             }
-        }
-    }
-    
-    post {
-        always {
-            echo 'Pipeline completed.'
-        }
-        success {
-            echo 'All stages completed successfully!'
-        }
-        failure {
-            echo 'Errors detected in the pipeline.'
         }
     }
 }
