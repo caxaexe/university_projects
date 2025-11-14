@@ -1,14 +1,4 @@
 #!/usr/bin/env python3
-"""
-currency_exchange_rate.py
-
-Usage:
-  python currency_exchange_rate.py FROM TO DATE [--api-url API_URL] [--api-key API_KEY]
-
-Example:
-  python currency_exchange_rate.py USD EUR 2025-01-01 --api-key EXAMPLE_API_KEY
-"""
-
 import argparse
 import json
 import os
@@ -16,7 +6,6 @@ import sys
 import logging
 from datetime import datetime
 
-# HTTP libs: try requests first, fallback to urllib
 try:
     import requests  # type: ignore
     HAS_REQUESTS = True
@@ -25,17 +14,14 @@ except Exception:
     import urllib.parse as _urllib_parse
     HAS_REQUESTS = False
 
-# --- Config logging: errors -> error.log and to stderr
 logger = logging.getLogger("currency_exchange")
-logger.setLevel(logging.DEBUG)  # handlers decide what is output
+logger.setLevel(logging.DEBUG)
 
-# File handler (only errors)
 file_handler = logging.FileHandler("error.log", encoding="utf-8")
 file_handler.setLevel(logging.ERROR)
 file_handler.setFormatter(logging.Formatter("%(asctime)s %(levelname)s: %(message)s"))
 logger.addHandler(file_handler)
 
-# Console handler for errors
 console_handler = logging.StreamHandler(sys.stderr)
 console_handler.setLevel(logging.ERROR)
 console_handler.setFormatter(logging.Formatter("%(levelname)s: %(message)s"))
@@ -53,13 +39,11 @@ def parse_args():
 
 
 def validate_inputs(from_c, to_c, date_str):
-    # allowed currencies per README
     allowed = {"MDL", "USD", "EUR", "RON", "RUS", "UAH"}
     from_c = from_c.upper()
     to_c = to_c.upper()
     if from_c not in allowed or to_c not in allowed:
         raise ValueError(f"Unsupported currency. Allowed: {', '.join(sorted(allowed))}")
-    # date validation
     try:
         d = datetime.strptime(date_str, "%Y-%m-%d")
     except ValueError:
@@ -72,7 +56,6 @@ def validate_inputs(from_c, to_c, date_str):
 
 
 def make_request(api_url, from_c, to_c, date_str, api_key, timeout=10):
-    # Build URL with GET params; API expects POST with form field 'key' per README.
     api_url = api_url.rstrip("/")
     url = f"{api_url}/?from={from_c}&to={to_c}&date={date_str}"
 
@@ -84,7 +67,6 @@ def make_request(api_url, from_c, to_c, date_str, api_key, timeout=10):
         except Exception as e:
             raise ConnectionError(f"HTTP request failed: {e}")
     else:
-        # urllib fallback (no external dependency)
         try:
             data = _urllib_parse.urlencode({"key": api_key}).encode("utf-8")
             req = _urllib_request.Request(url, data=data, method="POST")
@@ -124,7 +106,6 @@ def main():
         logger.exception(msg)
         sys.exit(1)
 
-    # Parse JSON response
     try:
         parsed = json.loads(raw_text)
     except Exception as e:
@@ -133,14 +114,12 @@ def main():
         logger.exception(msg)
         sys.exit(1)
 
-    # API returns {"error": "...", "data": {...}}
     if isinstance(parsed, dict) and parsed.get("error"):
         msg = f"API returned error: {parsed.get('error')}"
         print(msg, file=sys.stderr)
         logger.error(msg)
         sys.exit(1)
 
-    # Save to data file
     try:
         saved_path = save_json_to_file(parsed, from_c, to_c, date_str)
         print(f"Success: saved API response to {saved_path}")
