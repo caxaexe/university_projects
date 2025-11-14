@@ -1,7 +1,6 @@
 # Структура 
 
-```
-
+```php
 automation_scripting
 ├── branch main/
 │   └── lab01
@@ -10,6 +9,5 @@ automation_scripting
 ├── branch lab03/
 │   └── lab03
 └── branch lab04/
-    └── lab04
-    
+    └── lab04 
 ```
