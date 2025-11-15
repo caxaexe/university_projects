@@ -1,5 +1,4 @@
-error.log
-cron.log
+*.log
 data/*.json
 Thumbs.db
 .DS_Store

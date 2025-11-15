@@ -20,3 +20,5 @@ services:
     restart: unless-stopped
     depends_on:
       - php_service
+    volumes:
+      - ./data:/app/data 
