@@ -29,6 +29,7 @@ if (notExecute)
     Console.WriteLine("Not executed");
 }
 ```
+ > Hello, выведется инструкция с уловием тру
 
 *В чем функциональное и семантическое различие функций F1, F2, F3?*
 ```cs
@@ -73,8 +74,7 @@ static bool B()
     return true;
 }
 ```
-
-Что значит функциональное и семантическое?
+ > семантически - написаны по-разному, но вывол один и тот же. функционально - если в f3 вернуть false из а, буде другой результат
 
 
 ```cs
@@ -83,6 +83,7 @@ if (1)
     Console.WriteLine("Hello");
 }
 ```
+ > if применяется только с bool значениями, с числовыми неа
 
 ```cs
 if (false)
@@ -91,12 +92,14 @@ if (false)
     Console.WriteLine("B");
 }
 ```
+ > ничего не напечатается
 
 ```cs
 if (false)
     Console.WriteLine("A");
     Console.WriteLine("B");
 ```
+ > напечатается B, пушто только инструкция с А относится к if 
 
 ```cs
 if (false)
@@ -108,6 +111,7 @@ else
     Console.WriteLine("B");
 }
 ```
+ > B - тк else выполняется в том случае, если первое условие ложно
 
 ```cs
 bool a = true;
@@ -120,6 +124,7 @@ else
     Console.WriteLine("B");
 }
 ```
+ > ничего не напечатается, тк перезаписанное значение в первом условии уже ни на что не влияет
 
 ```cs
 F();
@@ -136,6 +141,7 @@ static void F()
     }
 }
 ```
+ > ничего не напечатается, выполнится только условие с тру
 
 ```cs
 if (true)
@@ -144,6 +150,7 @@ else
     Console.WriteLine("B");
 Console.WriteLine("C");
 ```
+ > A(true) и C(не в if)
 
 ```cs
 if (true)
@@ -153,6 +160,7 @@ else
     Console.WriteLine("B");
 }
 ```
+ > напечатается А
 
 *Как обычно записывают данный код, используя цепочку if-else?*
 ```cs
@@ -173,6 +181,20 @@ else
             Console.WriteLine("C");
         }
     }
+}
+```
+```
+if (a)
+{
+    Console.WriteLine("A");
+}
+else if (b)
+{
+    Console.WriteLine("B");
+}
+else if (c)
+{
+    Console.WriteLine("C");
 }
 ```
 
@@ -205,6 +227,63 @@ else
     }
 }
 ```
+цепочка
+```
+if (a)
+{
+    Console.WriteLine("A");
+}
+else if (b)
+{
+    Console.WriteLine("After A");
+    Console.WriteLine("B");
+}
+else if (c)
+{
+    Console.WriteLine("After A");
+    Console.WriteLine("After B");
+    Console.WriteLine("C");
+}
+else
+{
+    Console.WriteLine("After A");
+    Console.WriteLine("After B");
+    Console.WriteLine("After C");
+}
+```
+c применением early return / guard clause
+```
+static void SendWelcomeEmail(User user)
+{
+    // Можно блоком разграничить контракт 
+    // (необходимые условия для выполнения основного действия), 
+    // или вынести его в свою функцию.
+    {
+        // Соблюдена локальность: условия рядом с их обработкой.
+        if (user == null)
+        {
+            Console.WriteLine("User not found.");
+            return;
+        }
+    
+        if (!user.IsActive)
+        {
+            Console.WriteLine("User is not active.");
+            return;
+        }
+    
+        if (!user.EmailConfirmed)
+        {
+            Console.WriteLine("Email not confirmed.");
+            return;
+        }
+    }
+
+    // Основной код находится после всех проверок, а не в середине.
+    Console.WriteLine($"Sending email to {user.Email}");
+}
+```
+
 
 ```cs
 int i = 0;
@@ -229,13 +308,11 @@ while (true)
 
    Console.WriteLine("Increase by 1 normally");
    i++;
-
-   // Implicit continue.
-   // continue;
 }
 ```
+ > Increase by 2 on first iter - Increase by 1 normally - Exit
 
-Что делают break и continue
+ > Что делают break и continue? break прекращает выполнение цикла (переходит на первую инструкцию после цикла), continue переходит в начало цикла (дальнейшие инструкции из тела цикла не выполняются для этой итерации).
 
 ```cs
 static int F()
@@ -251,3 +328,4 @@ static int F()
     return 1;
 }
 ```
+ > При выполнении return 0, прерывается не только цикл, но и последующее выполнение оставшегося кода функции, break и return 1 никогда не выполнятся.
