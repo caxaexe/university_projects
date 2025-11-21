@@ -1,0 +1,4 @@
+[2025-11-21 14:22:39] ip=::1 error="FATAL ERROR: Uncaught Error: Call to undefined function undefined_function_123() in D:\Programs\xampp\htdocs\sawmlab7\tests\test_error.php:7
+Stack trace:
+#0 {main}
+  thrown in D:\Programs\xampp\htdocs\sawmlab7\tests\test_error.php at line 7"
