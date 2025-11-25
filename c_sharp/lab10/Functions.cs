@@ -1,59 +1,61 @@
 static class Functions
 {
-   public void ShowBooks(Data[] books)
-{
-    Console.WriteLine("Все книги в библиотеке:");
-    foreach(var book in books)
+    public static void ShowBooks(Data[] books)
     {
-        Console.WriteLine($"{book.Title} ({book.Year}) - {(book.IsTaken ? "Занята" : "Свободна")}");
-    }
-}
-
-public int FindBook(Data[] books, string title)
-{
-    for (int i = 0; i < books.Length; i++)
-    {
-        if (books[i].Title == title)
-            return i;
-    }
-    return -1;
-}
-
-public void TakeBook(Data[] books, string title)
-{
-    int i = FindBook(books, title);
-    if (i == -1)
-    {
-        Console.WriteLine("Книга не найдена.");
-        return;
+        Console.WriteLine("Все книги в библиотеке:");
+        foreach (var book in books)
+        {
+            Console.WriteLine($"{book.Title} ({book.Year}) - {(book.IsTaken ? "Занята" : "Свободна")}");
+        }
     }
 
-    if (books[i].IsTaken)
+    public static int FindBook(Data[] books, string title)
     {
-        Console.WriteLine("Книга уже занята.");
-        return;
+        for (int i = 0; i < books.Length; i++)
+        {
+            if (books[i].Title == title)
+                return i;
+        }
+        return -1;
     }
 
-    books[i].IsTaken = true;
-    Console.WriteLine($"Вы взяли книгу '{title}'");
-}
-
-public void ReturnBook(Data[] books, string title)
-{
-    int i = FindBook(books, title);
-    if (i == -1)
+    public static void TakeBook(Data[] books, string title)
     {
-        Console.WriteLine("Книна не найдена.");
-        return;
+        int index = FindBook(books, title);
+
+        if (index == -1)
+        {
+            Console.WriteLine("Книга не найдена.");
+            return;
+        }
+
+        if (books[index].IsTaken)
+        {
+            Console.WriteLine("Книга уже занята.");
+            return;
+        }
+
+        books[index].IsTaken = true; 
+        Console.WriteLine($"Вы взяли книгу '{title}'.");
     }
 
-    if (books[i].IsTaken)
+    public static void ReturnBook(Data[] books, string title)
     {
-        Console.WriteLine("Книга свободна.");
-        return;
-    }
+        int index = FindBook(books, title);
 
-    books[i].IsTaken = false;
-    Console.WriteLine($"Вы вернули книгу '{title}'");
-}
+        if (index == -1)
+        {
+            Console.WriteLine("Книга не найдена.");
+            return;
+        }
+
+        if (!books[index].IsTaken)
+        {
+            Console.WriteLine("Книга и так свободна.");
+            return;
+        }
+
+        books[index].IsTaken = false; 
+        Console.WriteLine($"Вы вернули книгу '{title}'.");
+    }
 }

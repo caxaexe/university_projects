@@ -1,4 +1,4 @@
-var data = new Book
+﻿var data = new Book
 {
     First = new Data
     {
