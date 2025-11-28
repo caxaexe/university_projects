@@ -184,7 +184,6 @@ pipeline {
  - Branch: */main
  - Script path: ссылка на файл Jenkins в моем проекте
 <img width="1882" height="855" alt="Снимок экрана 2025-11-04 195427" src="https://github.com/user-attachments/assets/c6fe80db-41be-4d82-87a9-b0e47bb7d6f1" />
-<img width="1461" height="333" alt="Снимок экрана 2025-11-04 195657" src="https://github.com/user-attachments/assets/5049cfe1-a407-42b9-9a46-9ce2f18b4a33" />
 
 Pipeline успешно создался, пройдя все тесты:
 <img width="1902" height="857" alt="Снимок экрана 2025-11-04 201709" src="https://github.com/user-attachments/assets/e828d158-1091-493e-9e1c-35a0d605b5cd" />  
