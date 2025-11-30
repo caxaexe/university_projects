@@ -1,0 +1,21 @@
+FROM jenkins/ssh-agent:jdk17
+
+USER root
+
+RUN apt-get update && \
+    apt-get install -y \
+      php-cli \
+      php-xml \
+      php-mbstring \
+      php-curl \
+      git \
+      unzip \
+      wget && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
+    php composer-setup.php --install-dir=/usr/local/bin --filename=composer && \
+    rm composer-setup.php
+
+USER jenkins
+WORKDIR /home/jenkins

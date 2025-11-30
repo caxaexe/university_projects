@@ -1,0 +1,86 @@
+---
+- name: Setup test PHP server
+  hosts: test_server
+  become: yes
+
+  vars:
+    app_root: /var/www/phpapp
+    server_name: test.local
+
+  tasks:
+    - name: Обновить cache пакетов
+      apt:
+        update_cache: yes
+
+    - name: Установить Apache и PHP
+      apt:
+        name:
+          - apache2
+          - libapache2-mod-php
+          - php
+          - php-mbstring
+          - php-xml
+          - php-curl
+          - php-mysql
+        state: present
+
+    - name: Включить модули Apache
+      apache2_module:
+        name: rewrite
+        state: present
+      notify: Reload Apache
+
+    - name: Создать директорию приложения
+      file:
+        path: "{{ app_root }}"
+        state: directory
+        owner: www-data
+        group: www-data
+        mode: "0755"
+
+    - name: Создать простой index.php (заглушка)
+      copy:
+        dest: "{{ app_root }}/index.php"
+        content: |
+          <?php
+          phpinfo();
+        owner: www-data
+        group: www-data
+        mode: "0644"
+
+    - name: Создать виртуальный хост для приложения
+      copy:
+        dest: /etc/apache2/sites-available/phpapp.conf
+        content: |
+          <VirtualHost *:80>
+              ServerName {{ server_name }}
+              DocumentRoot {{ app_root }}
+
+              <Directory {{ app_root }}>
+                  AllowOverride All
+                  Require all granted
+              </Directory>
+
+              ErrorLog ${APACHE_LOG_DIR}/phpapp_error.log
+              CustomLog ${APACHE_LOG_DIR}/phpapp_access.log combined
+          </VirtualHost>
+      notify: Reload Apache
+
+    - name: Отключить default vhost
+      file:
+        path: /etc/apache2/sites-enabled/000-default.conf
+        state: absent
+      notify: Reload Apache
+
+    - name: Включить новый vhost
+      file:
+        src: /etc/apache2/sites-available/phpapp.conf
+        dest: /etc/apache2/sites-enabled/phpapp.conf
+        state: link
+      notify: Reload Apache
+
+  handlers:
+    - name: Reload Apache
+      service:
+        name: apache2
+        state: restarted
