@@ -1,6 +1,6 @@
 static class Functions
 {
-    public static void ShowBooks(Data[] books)
+    public static void ShowBooks(Book[] books)
     {
         Console.WriteLine("Все книги в библиотеке:");
         foreach (var book in books)
@@ -9,7 +9,7 @@ static class Functions
         }
     }
 
-    public static int FindBook(Data[] books, string title)
+    public static int FindBook(Book[] books, string title)
     {
         for (int i = 0; i < books.Length; i++)
         {
@@ -19,7 +19,7 @@ static class Functions
         return -1;
     }
 
-    public static void TakeBook(Data[] books, string title)
+    public static void TakeBook(Book[] books, string title)
     {
         int index = FindBook(books, title);
 
@@ -39,7 +39,7 @@ static class Functions
         Console.WriteLine($"Вы взяли книгу '{title}'.");
     }
 
-    public static void ReturnBook(Data[] books, string title)
+    public static void ReturnBook(Book[] books, string title)
     {
         int index = FindBook(books, title);
 

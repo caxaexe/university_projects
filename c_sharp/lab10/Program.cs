@@ -1,44 +1,35 @@
-﻿var data = new Book
+﻿Book[] library =
 {
-    First = new Data
+    new Book
     {
         Title = "First",
         Year = 1234,
         IsTaken = true,
     },
-    Second = new Data
+    new Book
     {
         Title = "Second",
         Year = 1876,
         IsTaken = false,
     },
-    Third = new Data
+    new Book
     {
         Title = "Third",
         Year = 1999,
         IsTaken = true,
     },
-    Fourth = new Data
+    new Book
     {
         Title = "Fourth",
         Year = 2005,
         IsTaken = false,
     },
-    Fifth = new Data
+    new Book
     {
         Title = "Fifth",
         Year = 1234,
         IsTaken = true,
     },
-};
-
-Data[] library =
-{
-    data.First,
-    data.Second,
-    data.Third,
-    data.Fourth,
-    data.Fifth
 };
 
 
@@ -77,16 +68,8 @@ while (true)
 }
 
 
-class Book
-{
-    public required Data First;
-    public required Data Second;
-    public required Data Third;
-    public required Data Fourth;
-    public required Data Fifth;
-}
 
-class Data
+class Book
 {
     public required string Title;
     public required int Year;
