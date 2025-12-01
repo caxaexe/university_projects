@@ -1,37 +1,38 @@
 pipeline {
-    agent { label 'php-ssh-agent' }
-
-    environment {
-        REPO_URL = 'git@github.com:YOUR_USERNAME/YOUR_PHP_REPO.git'
-        BRANCH   = 'main'
-    }
+    agent { label 'ssh-agent' }
 
     stages {
         stage('Checkout') {
             steps {
-                git branch: "${BRANCH}", url: "${REPO_URL}"
+                echo 'Cloning repository...'
+                checkout scm
             }
         }
 
-        stage('Install dependencies') {
+        stage('Install Composer Dependencies') {
             steps {
-                sh 'composer install --no-interaction --no-progress'
+                echo 'Installing Composer dependencies...'
+                sh 'composer install'
             }
         }
 
-        stage('Run tests') {
+        stage('Run Tests') {
             steps {
+                echo 'Running PHPUnit tests...'
                 sh './vendor/bin/phpunit --testdox'
             }
         }
     }
 
     post {
+        always {
+            echo 'Pipeline completed.'
+        }
         success {
-            echo 'PHP build & tests passed'
+            echo 'Build & Test pipeline finished successfully!'
         }
         failure {
-            echo 'PHP build or tests failed'
+            echo 'Pipeline failed — check test logs.'
         }
     }
 }

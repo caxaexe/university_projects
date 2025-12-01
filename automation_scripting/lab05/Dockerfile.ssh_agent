@@ -1,21 +1,23 @@
-FROM jenkins/ssh-agent:jdk17
+FROM php:8.2-cli
 
-USER root
+RUN apt-get update && apt-get install -y \
+    git \
+    unzip \
+    zip \
+    curl \
+    openssh-client \
+    openssh-server \
+    && rm -rf /var/lib/apt/lists/*
 
-RUN apt-get update && \
-    apt-get install -y \
-      php-cli \
-      php-xml \
-      php-mbstring \
-      php-curl \
-      git \
-      unzip \
-      wget && \
-    rm -rf /var/lib/apt/lists/*
+RUN useradd -m -s /bin/bash jenkins
 
-RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
-    php composer-setup.php --install-dir=/usr/local/bin --filename=composer && \
-    rm composer-setup.php
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+RUN chown -R jenkins:jenkins /home/jenkins
 
 USER jenkins
 WORKDIR /home/jenkins
+
+RUN mkdir -p /home/jenkins/.ssh
+
+CMD ["sleep", "infinity"]

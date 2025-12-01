@@ -1,55 +1,44 @@
 services:
+
+  ssh-agent:
+    build:
+      context: .
+      dockerfile: Dockerfile.ssh_agent
+    container_name: ssh-agent
+    volumes:
+      - ./project:/home/jenkins/project
+      - ./jenkins_ssh_agent:/home/jenkins/.ssh/id_rsa
+    tty: true
+
+
+  ansible-agent:
+    build:
+      context: .
+      dockerfile: Dockerfile.ansible_agent
+    container_name: ansible-agent
+    volumes:
+      - ./:/home/ansible/project
+      - ./ansible_to_testserver:/home/ansible/.ssh/test_server_key
+    tty: true
+
+  test-server:
+    build:
+      context: .
+      dockerfile: Dockerfile.test_server
+    container_name: test-server
+    ports:
+      - "2222:22"
+      - "8081:80"
+
   jenkins-controller:
-    image: jenkins/jenkins:lts-jdk17
+    image: jenkins/jenkins:lts
     container_name: jenkins-controller
-    user: root
     ports:
       - "8080:8080"
       - "50000:50000"
     volumes:
       - jenkins_home:/var/jenkins_home
-      - /var/run/docker.sock:/var/run/docker.sock
-      - ./keys:/keys:ro
-    networks:
-      - jenkins-net
-
-  ssh-agent:
-    build:
-      context: ./
-      dockerfile: Dockerfile.ssh_agent
-    container_name: ssh-agent
-    user: root
     environment:
-      - JENKINS_AGENT_SSH_PUBKEY=${JENKINS_AGENT_SSH_PUBKEY:-}
-    networks:
-      - jenkins-net
-
-  ansible-agent:
-    build:
-      context: ./
-      dockerfile: Dockerfile.ansible_agent
-    container_name: ansible-agent
-    volumes:
-      - ./ansible:/ansible
-    networks:
-      - jenkins-net
-
-
-
-  test-server:
-    build:
-      context: ./
-      dockerfile: Dockerfile.test_server
-    container_name: test-server
-    networks:
-      - jenkins-net
-    ports:
-      - "8081:80"
-    volumes:
-      - ./keys/test_server:/home/ansible/.ssh:ro
-
-networks:
-  jenkins-net:
-
+      - JAVA_OPTS=-Dhudson.footerURL=https://jenkins.io
 volumes:
   jenkins_home:

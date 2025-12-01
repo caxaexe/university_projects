@@ -1,2 +1,6 @@
-keys/
-*.log
+jenkins_ssh_agent
+jenkins_ssh_agent.pub
+jenkins_ssh_ansible_agent
+jenkins_ssh_ansible_agent.pub
+ansible_to_testserver
+ansible_to_testserver.pub

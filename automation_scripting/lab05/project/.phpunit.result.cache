@@ -1,0 +1,1 @@
+{"version":2,"defects":[],"times":{"App\\Tests\\CalculatorTest::testAdd":0.289,"App\\Tests\\CalculatorTest::testSubtract":0,"App\\Tests\\CalculatorTest::testMultiply":0,"App\\Tests\\CalculatorTest::testDivide":0,"App\\Tests\\CalculatorTest::testDivideByZeroThrowsException":0.06}}
