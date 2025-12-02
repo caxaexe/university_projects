@@ -1,48 +1,29 @@
 ﻿Library library = new Library(
     new Book[]
     {
-        new Book
-        {
-            Title = "First",
-            Year = 1234,
-            IsTaken = true,
-        },
-        new Book
-        {
-            Title = "Second",
-            Year = 1876,
-            IsTaken = false,
-        },
-        new Book
-        {
-            Title = "Third",
-            Year = 1999,
-            IsTaken = true,
-        },
-        new Book
-        {
-            Title = "Fourth",
-            Year = 2005,
-            IsTaken = false,
-        },
-        new Book
-        {
-            Title = "Fifth",
-            Year = 1234,
-            IsTaken = true,
-        },
+        new Book { Title = "First", Year = 1234, IsTaken = true, Author = "John" },
+        new Book { Title = "Second", Year = 1876, IsTaken = false, Author = "Kavalski" },
+        new Book { Title = "Third", Year = 1999, IsTaken = true, Author = "Plus" },
+        new Book { Title = "Fourth", Year = 2005, IsTaken = false, Author = "Minus" },
+        new Book { Title = "Fifth", Year = 1234, IsTaken = true, Author = "Jane" },
     }
 );
 
 
+InputLibraryFilter testInput = new InputLibraryFilter();
+testInput.TrySetTitleContains("i");
+testInput.TrySetState("any");
+LibraryFilter testFilter = testInput.CreateFinalFilter();
+Console.WriteLine("\nТестовый фильтр:");
+library.ShowBooksFilter(testFilter);
+
 while (true)
 {
-    Console.WriteLine("\n1 - Посмотреть все книги.");
-    Console.WriteLine("2 - Взять книгу.");
-    Console.WriteLine("3 - Вернуть книгу.");
-    Console.WriteLine("4 - Посмотреть книги по фильтру.");
-    Console.WriteLine("5 - Выйти.");
-    Console.WriteLine("Выбор: ");
+    Console.WriteLine("\n1 - Все книги");
+    Console.WriteLine("2 - Взять книгу");
+    Console.WriteLine("3 - Вернуть книгу");
+    Console.WriteLine("4 - Выход");
+    Console.Write("Выбор: ");
 
     string? choice = Console.ReadLine();
 
@@ -51,83 +32,21 @@ while (true)
         case "1":
             library.ShowBooks();
             break;
+
         case "2":
-            Console.WriteLine("Введите название книги: ");
-            {
-                string? t = Console.ReadLine();
-                if (t == null) t = "";
-                library.TakeBook(t);
-            }
+            Console.Write("Введите название: ");
+            library.TakeBook(Console.ReadLine() ?? "");
             break;
+
         case "3":
             Console.Write("Введите название: ");
-            {
-                string? t = Console.ReadLine();
-                if (t == null) t = "";
-                library.ReturnBook(t);
-            }
+            library.ReturnBook(Console.ReadLine() ?? "");
             break;
         case "4":
-            {
-                LibraryFilter filter = CreateFilter();
-                library.ShowBooksFilter(filter);
-            }
-            break;
-        case "5":
-            Console.WriteLine("Выход");
+            Console.WriteLine("Выход.");
             return;
         default:
-            Console.WriteLine("Нельзя");
+            Console.WriteLine("Неверный выбор.");
             break;
     }
-}
-
-static LibraryFilter CreateFilter()
-    {
-        LibraryFilter filter = new LibraryFilter();
-
-        Console.Write("Название содержит: ");
-        string? t1 = Console.ReadLine();
-        if (t1 == "")
-            filter.TitleContains = null;
-        else
-            filter.TitleContains = t1;
-
-        Console.Write("Начинается с: ");
-        string? t2 = Console.ReadLine();
-        if (t2 == "")
-            filter.TitleStartsWith = null;
-        else
-            filter.TitleStartsWith = t2;
-
-        Console.Write("Состояние (free / taken / any): ");
-        string? state = Console.ReadLine();
-
-        if (state == "free")
-            filter.IsTaken = false;
-        else if (state == "taken")
-            filter.IsTaken = true;
-        else
-            filter.IsTaken = null;
-
-        return filter;
-}
-
-class Book
-{
-    public string Title { get; set; }
-    public int Year { get; set; }
-    public bool IsTaken { get; set; }
-
-    public Book()
-    {
-        Title = "";
-    }
-}
-
-class LibraryFilter
-{
-    public string? TitleContains { get; set; }
-    public string? TitleStartsWith { get; set; }
-    public bool? IsTaken { get; set; }
 }
