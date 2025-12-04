@@ -14,8 +14,9 @@
 7. В конце выводится общее количество удалённых файлов.
    
 ## Ход работы
-Для выполнения данной работы я создаю файл `cleanup.sh` в Linux и делаю его исполняемым:  
-<img width="1452" height="49" alt="Снимок экрана 2025-09-13 204503" src="https://github.com/user-attachments/assets/0925c64b-a4db-4e6d-ba16-2b7c342f610b" />
+Для выполнения данной работы я создаю файл [cleanup.sh](https://github.com/caxaexe/university_projects/blob/main/automation_scripting/lab01/cleanup.sh) в Linux и делаю его исполняемым:  
+<img width="1452" height="49" alt="image" src="https://github.com/user-attachments/assets/29beb44d-162c-45e6-a236-fb2f82f5137b" />
+
 
 Скрипт:
 ```bash
@@ -65,10 +66,12 @@ echo "Удалено файлов: $deleted_count"
 5. Внутренний цикл ищет все файлы с нужным расширением и удаляет их.
 
 Далее проверяю работоспособность созданного скрипта. Для этого я создаю несколько файлов с расширенями `.tmp` и `.log` в той же директории:  
-<img width="1519" height="262" alt="Снимок экрана 2025-09-13 204706" src="https://github.com/user-attachments/assets/32113603-8724-4718-8980-06cf7bed10c1" />  
+<img width="1519" height="262" alt="image" src="https://github.com/user-attachments/assets/daa3edb8-c0fd-4868-9061-c966655a9411" />
+ 
   
 Затем запускаю скрипт и можно заметить, что он выполняет свою работу просто великолепно просто прекрасно просто восхитительно, были удалены все имеющиеся файлы с указанными расширениями:
-<img width="1525" height="132" alt="Снимок экрана 2025-09-13 204757" src="https://github.com/user-attachments/assets/58d12658-53f2-43e6-86fe-e8163953982f" />
+<img width="1525" height="132" alt="image" src="https://github.com/user-attachments/assets/d32d5011-8fa9-48a6-9d94-3faf8094bb8f" />
+
 
 
 ## Вывод
