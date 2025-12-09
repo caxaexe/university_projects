@@ -219,3 +219,12 @@ Auto Scaling Group (на основе AMI);
 ![alt text](image-37.png)
 ![alt text](image-36.png)
 ![alt text](image-38.png)
+
+## Вывод
+В лабораторной работе была настроена отказоустойчивая архитектура в AWS. Созданы VPC с подсетями, виртуальная машина с nginx, Application Load Balancer и Auto Scaling Group на основе AMI. Произведено нагрузочное тестирование через CloudWatch, после чего проверена работа балансировки и авто-масштабирования. В конце все ресурсы были удалены для исключения лишних затрат.
+
+## Источники
+- https://elearning.usm.md/mod/assign/view.php?id=322113
+- https://eu-central-1.console.aws.amazon.com/vpcconsole/home?region=eu-central-1#Home:
+- https://eu-central-1.console.aws.amazon.com/ec2/home?region=eu-central-1#Overview:
+- https://eu-central-1.console.aws.amazon.com/cloudwatch/home?region=eu-central-1#home:
